@@ -1,23 +1,4 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "frontend/package.json",
-        "use": "@vercel/next"
-      },
-      {
-        "src": "backend/pyproject.toml",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/backend/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/frontend/$1"
-      }
-    ]
+    "devCommand": "bash ./run.sh",
+    "rewrites": [{ "source": "/(.*)", "destination": "/api/server" }]
   }
