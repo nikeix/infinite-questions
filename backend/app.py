@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from fastapi import FastAPI
 from yarl import URL
 
-from .trivia_ai import generate_trivia_question
-from .wikipedia_api import get_articles, TriviaType
+from trivia_ai import generate_trivia_question
+from wikipedia_api import get_articles, TriviaType
 
 app = FastAPI()
 

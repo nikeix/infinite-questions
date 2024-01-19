@@ -1,0 +1,13 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "https://infinite-questions-backend.vercel.app/api/$1"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "https://infinite-questions-frontend.vercel.app/$1"
+      }
+    ]
+  }
+  
