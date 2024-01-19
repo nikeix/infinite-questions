@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import QuestionAnswer from './QuestionAnswer'; // Import the component
-import FinalScreen from './FinalScreen'; // Import the FinalScreen component
+import FinalScreen from './FinalScreen';
+import LoadingBar from "react-top-loading-bar"; // Import the FinalScreen component
 
 
 async function fetchQuestions() {
@@ -87,6 +88,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <LoadingBar
+            color='#f11946'
+            progress={((currentQuestionIndex + 1) / (questions.length)) * 100}
+          />
         {content}
       </header>
     </div>
