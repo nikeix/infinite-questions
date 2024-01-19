@@ -1,0 +1,189 @@
+/* App.css or a separate CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* Apply the Roboto font to the entire app */
+  margin: 0;
+  /* Reset default margin to ensure consistency */
+  padding: 0;
+  /* Reset default padding to ensure consistency */
+}
+
+/* App.css */
+.App-header {
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  /* other styles... */
+}
+
+/* App.css */
+.startButton {
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  /* Make it circular */
+  width: 200px;
+  /* Set the width to make it larger */
+  height: 200px;
+  /* Set the height to make it larger */
+  font-size: 2.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  /* Center the button */
+  margin: 0 auto;
+  /* Center the button */
+  margin-top: 50px;
+  /* Add margin from the top */
+}
+
+.startButton:hover {
+  background-color: #ffd700;
+  /* A slightly darker yellow on hover */
+}
+
+.startTitle {
+  font-size: 6em;
+  text-align: center;
+}
+
+
+
+/* App.css */
+.navButton {
+  background-color: yellow;
+  color: black;
+  width: 40px;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  /* Center vertically */
+  transform: translateY(-50%);
+  /* Align center */
+}
+
+.navButtonLeft {
+  left: 15px;
+  /* Adjust distance from the left */
+}
+
+.navButtonRight {
+  right: 15px;
+  /* Adjust distance from the right */
+}
+
+/* Arrow styling if needed */
+.arrow {
+  font-size: 2.5em;
+  /* Adjust the size of the arrow text */
+}
+
+/* App.css */
+.progressIndicator {
+  color: rgb(30, 184, 255);
+  /* Set the text color to blue */
+  font-weight: bold;
+  /* Make the text boldish */
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  /* Center-align the progress text */
+}
+
+/* Center the QuestionAnswer screen */
+.questionAnswer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  /* Make it occupy the full viewport height */
+}
+
+/* Make the "תשובה" button blue and hollow */
+.startRevealButton {
+  background-color: transparent;
+  color: rgb(30, 184, 255);
+  /* Set the text color to blue */
+  border: 2px solid rgb(30, 184, 255);
+  /* Add a blue border */
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.startRevealButton:hover {
+  background-color: rgb(30, 184, 255);
+  /* Blue background on hover */
+  color: white;
+  /* White text on hover */
+}
+
+
+/* App.css */
+/* App.css */
+.answerPopup {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(30, 184, 255); /* Blue background color */
+  color: white;
+  text-align: center;
+  transform: translateY(0%); /* Start at 40% and go up */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1; /* Ensure it's above other content */
+  padding-bottom: 140px;/* Adjust padding as needed */
+  padding-top: 20px;/* Adjust padding as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%; /* Set a maximum height for the popup */
+  overflow-y: auto; /* Add vertical scrolling if content exceeds max height */
+}
+
+
+.answer {
+  font-size: 1.5em;
+}
+
+.divider {
+  height: 2px;
+  background-color: white;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.correctButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.correctButton {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.correctButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.correctButtonsText {
+  font-size: 1.5em;
+  text-align: center;
+}
