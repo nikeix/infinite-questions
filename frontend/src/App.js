@@ -4,30 +4,11 @@ import QuestionAnswer from './QuestionAnswer'; // Import the component
 import FinalScreen from './FinalScreen'; // Import the FinalScreen component
 
 
-const mockQuestions = [
-  {
-    question: "מי הוא הדר אשוח?",
-    answer: "בדיקה בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה  בדיקה ",
-    url: "https://en.wikipedia.org/wiki/Paris"
-  },
-  {
-    question: "מי הוא מיז אשוח?",
-    answer: "The Eiffel Tower (/ˈaɪfəl/ EYE-fəl; French: tour Eiffel [tuʁ‿ɛfɛl] (About this soundlisten)) is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.",
-    url: "https://en.wikipedia.org/wiki/Paris"
-  },
-  // Add more questions as needed
-];
-
-// async function fetchQuestion() {
-//   const response = await fetch('/api/questions?count=1'); // Fetches one question
-//   const questions = await response.json();
-//   return questions[0]; // Assuming the API returns an array of questions
-// }
 async function fetchQuestions() {
-  let q = mockQuestions;
-  // add userAnswer to each question with null
-  q.forEach(question => question.userAnswer = null);
-  return q;
+  const response = await fetch('/api/trivia?max_articles=3&trivia_type=RANDOM');
+  const trivia = await response.json();
+  return trivia;
+  // return [{"question":"שאלה: מי הוא איש העסקים שבשליטתו של חברת דלק נדל\"ן?","answer":"תשובה: יצחק תשובה.","source_url":"https://he.wikipedia.org/wiki/%D7%93%D7%9C%D7%A7_%D7%A0%D7%93%D7%9C%22%D7%9F"},{"question":"שאלה: איזה תפקיד כיהן אודי שני בצה\"ל?","answer":"תשובה: ראש אגף התקשוב, מפקד הגיס הצפוני, ומנכ\"ל משרד הביטחון.","source_url":"https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%93%D7%99_%D7%A9%D7%A0%D7%99"},{"question":"שאלה: מתי הוקמה שכונת זיכרון יוסף?","answer":"תשובה: בשנת 1927.","source_url":"https://he.wikipedia.org/wiki/%D7%96%D7%99%D7%9B%D7%A8%D7%95%D7%9F_%D7%99%D7%95%D7%A1%D7%A3"}];
 }
 
 
@@ -42,6 +23,8 @@ function App() {
 
   const startQuiz = async () => {
     const questions = await fetchQuestions();
+    // add userAnswer property to each question
+    questions.forEach(question => question.userAnswer = null);
     setQuestions(questions);
     setQuizStarted(true);
   };

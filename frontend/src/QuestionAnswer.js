@@ -24,7 +24,7 @@ function QuestionAnswer({ question, questionNumber: questionIndex, totalQuestion
         <span className="arrow">&gt;</span>
       </button>
 
-      <h2>{question.question}</h2>
+      <h2 className='question'>{question.question}</h2>
 
       {!answerRevealed ? (
         <button className="startRevealButton" onClick={revealAnswer}>תשובה</button>

@@ -14,8 +14,8 @@ from infinite_questions.config import WIKIPEDIA_LANGUAGE, WIKIPEDIA_API_PROJECT_
 
 
 class TriviaType(Enum):
-    RANDOM = 'Random Articles'
-    NEWS = 'News Articles'
+    RANDOM = 'RANDOM'
+    NEWS = 'NEWS'
 
 
 def _wiki_instance():
