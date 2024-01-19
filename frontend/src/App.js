@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import QuestionAnswer from './QuestionAnswer'; // Import the component
 import FinalScreen from './FinalScreen';
-import LoadingBar from "react-top-loading-bar"; // Import the FinalScreen component
+import LoadingBar from "react-top-loading-bar";
+import {FidgetSpinner} from "react-loader-spinner"; // Import the FinalScreen component
 
 
 async function fetchQuestions() {
@@ -14,6 +15,7 @@ async function fetchQuestions() {
 
 
 function App() {
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
   const [questions, setQuestions] = useState([]); // [question1, question2, ...
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -23,7 +25,10 @@ function App() {
 
 
   const startQuiz = async () => {
+    setIsLoadingQuestions(true);
     const questions = await fetchQuestions();
+    setIsLoadingQuestions(false);
+
     // add userAnswer property to each question
     questions.forEach(question => question.userAnswer = null);
     setQuestions(questions);
@@ -77,12 +82,26 @@ function App() {
       );
     }
   } else {
-    content = (
-      <>
-        <h1 className="startTitle">20 שאלות</h1>
-        <button className="startButton" onClick={startQuiz}>התחילו!</button>
-      </>
-    );
+    if (isLoadingQuestions) {
+      // Loading questions from backend
+      content = <div>
+        <FidgetSpinner
+            visible={true}
+            height="60%"
+            width="60%"
+            ariaLabel="fidget-spinner-loading"
+            wrapperStyle={{}}
+            wrapperClass="fidget-spinner-wrapper"
+        /><h4>מייצר שאלות...</h4>
+      </div>
+    } else {
+      content = (
+          <>
+            <h1 className="startTitle">20 שאלות</h1>
+            <button className="startButton" onClick={startQuiz}>התחילו!</button>
+          </>
+      );
+    }
   }
 
   return (
