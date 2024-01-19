@@ -1,6 +1,10 @@
 /* App.css or a separate CSS file */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+  --yellow: #ffdf00;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   /* Apply the Roboto font to the entire app */
@@ -20,7 +24,7 @@ body {
 
 /* App.css */
 .startButton {
-  background-color: yellow;
+  background-color: var(--yellow);
   color: black;
   border: none;
   border-radius: 50%;
@@ -54,7 +58,7 @@ body {
 
 /* App.css */
 .navButton {
-  background-color: yellow;
+  background-color: var(--yellow);
   color: black;
   width: 40px;
   height: 70px;
