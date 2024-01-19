@@ -1,7 +1,7 @@
 import asyncio
 from dataclasses import dataclass
 
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from yarl import URL
 
 from infinite_questions.trivia_ai import generate_trivia_question
@@ -15,6 +15,11 @@ class Trivia:
     question: str
     answer: str
     source_url: str
+
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
 
 
 @app.route('/')
