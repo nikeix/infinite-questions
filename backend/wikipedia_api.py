@@ -9,7 +9,7 @@ import aiohttp
 import wikipediaapi
 from yarl import URL
 
-from infinite_questions.config import WIKIPEDIA_LANGUAGE, WIKIPEDIA_API_PROJECT_NAME, WIKIPEDIA_RANDOM_ARTICLE_URL, \
+from .config import WIKIPEDIA_LANGUAGE, WIKIPEDIA_API_PROJECT_NAME, WIKIPEDIA_RANDOM_ARTICLE_URL, \
     WIKIPEDIA_NEWS_AND_AFFAIRS_PAGE_NAME
 
 

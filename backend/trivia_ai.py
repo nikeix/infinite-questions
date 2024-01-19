@@ -3,7 +3,7 @@ from typing import Tuple
 
 from openai import AsyncOpenAI
 
-from infinite_questions.config import GPT_TRIVIA_PROMPT
+from .config import GPT_TRIVIA_PROMPT
 
 
 async def generate_trivia_question(trivia_info: str) -> Tuple[str, str]:

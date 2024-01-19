@@ -2,12 +2,10 @@ import asyncio
 from dataclasses import dataclass
 
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-
 from yarl import URL
 
-from infinite_questions.trivia_ai import generate_trivia_question
-from infinite_questions.wikipedia_api import get_articles, TriviaType
+from .trivia_ai import generate_trivia_question
+from .wikipedia_api import get_articles, TriviaType
 
 app = FastAPI()
 
@@ -37,12 +35,7 @@ async def get_trivia_api(
 
 def main():
     import uvicorn
-    web = FastAPI()
-
-    web.mount("/api", app, name="api")
-    web.mount("/", StaticFiles(directory="../../frontend/build", html=True), name="static")
-
-    uvicorn.run(web, host='0.0.0.0', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=80)
 
 
 if __name__ == '__main__':
