@@ -29,7 +29,7 @@ function QuestionAnswer({ question, questionNumber: questionIndex, totalQuestion
       {!answerRevealed ? (
         <button className="startRevealButton" onClick={revealAnswer}>תשובה</button>
       ) : (
-        <AnswerPopup answer={question.answer} onCorrect={handleResponse} isVisible={isPopupVisible} />
+        <AnswerPopup answer={question.answer} source_url={question.source_url} onCorrect={handleResponse} isVisible={isPopupVisible} />
       )}
 
       <button className="navButton navButtonRight" onClick={() => { onNavigate(-1); setAnswerRevealed(false); }}>

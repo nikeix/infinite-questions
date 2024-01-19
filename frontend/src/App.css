@@ -158,6 +158,12 @@ body {
   font-size: 1.5em;
 }
 
+.source_url {
+  font-size: 1.2em;
+  color: wheat;
+  margin: 10px 0;
+}
+
 .divider {
   height: 2px;
   background-color: white;
