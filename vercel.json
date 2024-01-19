@@ -1,0 +1,4 @@
+{
+    "devCommand": "bash ./run.sh",
+    "rewrites": [{ "source": "/(.*)", "destination": "/api/server" }]
+  }
