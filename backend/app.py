@@ -9,6 +9,8 @@ from wikipedia_api import get_articles, TriviaType
 
 app = FastAPI()
 
+ARTICLES_LIMIT = 10
+
 @dataclass
 class Trivia:
     question: str
@@ -26,6 +28,8 @@ async def get_trivia_api(
     max_articles: int = 1,
     trivia_type: TriviaType = TriviaType.RANDOM,
     ) -> list[Trivia]:
+    if max_articles > ARTICLES_LIMIT:
+        return {'error': f'Maximum {ARTICLES_LIMIT} articles allowed'}
 
     articles = await get_articles(trivia_type, max_articles)
 
@@ -35,7 +39,7 @@ async def get_trivia_api(
 
 def main():
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+    uvicorn.run("app:app", host='0.0.0.0', port=8000, reload=True)
 
 
 if __name__ == '__main__':
