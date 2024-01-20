@@ -1,0 +1,22 @@
+{
+  "name": "infinite-questions",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "postinstall": "pip install -r ./backend/requirements.txt && cd ./frontend && npm install",
+    "start": "concurrently \"python ./backend/app.py\" \"cd ./frontend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikeix/infinite-questions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikeix/infinite-questions/issues"
+  },
+  "homepage": "https://github.com/nikeix/infinite-questions#readme",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
