@@ -6,6 +6,7 @@ import LoadingBar from "react-top-loading-bar";
 import {FidgetSpinner} from "react-loader-spinner"; // Import the FinalScreen component
 import Picker from 'react-mobile-picker'
 import Cookies from "universal-cookie";
+import Popup from "reactjs-popup";
 
 const triviaGenerationParams = {
   type: ['RANDOM', 'NEWS'],
@@ -34,6 +35,7 @@ function App() {
     type: 'RANDOM'
   })
   const cookies = new Cookies(null, { path: '/' });
+  const [serverSecret, setServerSecret] = useState(cookies.get('server_secret'));
   // Question index to answer: True, False, Null
 
 
@@ -69,6 +71,11 @@ function App() {
     if (allQuestionsAnswered()) {
       setIsFinished(true);
     }
+  };
+
+  const handlePasswordChange = (e) => {
+    setServerSecret(e.target.value)
+    cookies.set('server_secret', e.target.value);
   };
 
 
@@ -110,6 +117,22 @@ function App() {
     } else {
       content = (
           <>
+            <Popup
+              trigger={<button className="settings-button">⚙️</button>}
+              modal
+              closeOnDocumentClick
+               className="popup-content"
+            >
+              <div>
+                <span>מפתח</span>
+                <input
+                  type="password"
+                  value={serverSecret}
+                  onChange={handlePasswordChange}
+                  style={{margin: '10px'}}
+                />
+              </div>
+            </Popup>
             <h1 className="startTitle">20 שאלות</h1>
             <button className="startButton" onClick={startQuiz}>התחילו!</button>
             <Picker value={triviaParams} onChange={setTriviaParams}>
