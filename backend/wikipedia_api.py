@@ -47,13 +47,15 @@ async def _resolve_random_article() -> Tuple[URL, str]:
 
 
 async def _get_random_articles_summaries(max_articles: int) -> list[Tuple[URL, str]]:
-    results = set(await asyncio.gather(*[_resolve_random_article() for _ in range(max_articles)]))
+    # Find twice the amount of articles, later take the best ones
+    results = set(await asyncio.gather(*[_resolve_random_article() for _ in range(max_articles * 2)]))
 
-    while len(results) < max_articles:
-        # Just in case we hit the same one twice
-        results.add(await _resolve_random_article())
+    summary_results = [(r[0], _get_page_summary(r[1])) for r in results]
 
-    return [(r[0], _get_page_summary(r[1])) for r in results]
+    # Take the longest articles
+    summary_results = sorted(summary_results, key=lambda r: len(r[1]), reverse=True)
+
+    return summary_results[:max_articles]
 
 
 async def _get_news_articles_summaries(max_articles: int) -> list[Tuple[URL, str]]:
