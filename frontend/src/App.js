@@ -44,14 +44,11 @@ function App() {
 
   const startQuiz = async () => {
     setIsLoadingQuestions(true);
-    let questionsPromises = [
-      fetchQuestions(triviaParams, cookies.get("server_secret"), 5),
-      fetchQuestions(triviaParams, cookies.get("server_secret"), 5),
-      fetchQuestions(triviaParams, cookies.get("server_secret"), 5),
-      fetchQuestions(triviaParams, cookies.get("server_secret"), 5),
+    const questionsArrays = [
+      await fetchQuestions(triviaParams, cookies.get("server_secret"), 10),
+      await fetchQuestions(triviaParams, cookies.get("server_secret"), 10),
     ];
 
-    let questionsArrays = await Promise.all(questionsPromises);
     let questions = questionsArrays.flat();
 
     setIsLoadingQuestions(false);
