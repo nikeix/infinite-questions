@@ -13,7 +13,7 @@ from wikipedia_api import get_articles, TriviaType
 app = FastAPI()
 API_KEY_HEADER = APIKeyHeader(name="X-API-Key")
 
-ARTICLES_LIMIT = 10
+ARTICLES_LIMIT = 20
 
 
 @dataclass

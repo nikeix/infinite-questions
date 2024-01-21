@@ -14,7 +14,7 @@ const triviaGenerationParams = {
 
 async function fetchQuestions(triviaParams, server_secret) {
   console.log(triviaParams.type)
-  const response = await fetch(`/api/trivia?max_articles=3&trivia_type=${triviaParams.type}`, {
+  const response = await fetch(`/api/trivia?max_articles=20&trivia_type=${triviaParams.type}`, {
     headers: new Headers({
       'X-API-Key': server_secret
     })
